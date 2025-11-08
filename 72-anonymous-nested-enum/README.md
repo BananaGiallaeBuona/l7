@@ -2,15 +2,11 @@
 
 **Fare correggere ad ogni parte dell'esercizio, non solo al termine di tutte le parti.**
 
-## Parte 1: classe anonima
-
-Si osservi la classe Function, che modella una singola funzione con un solo input ed un solo output di tipo arbitrario.
-Si implementi il metodo `identity()`, che deve restituire la funzione identià
-(ossia, che restituisce l'input passato in ingresso senza modifica alcuna)
-tramite una classe anonima.
+## Parte 1: cla FATTO
 Si osservi `TestFunctionalLibrary` per trovare esempi di classi anonime che implementano function.
 Ci si prepari a rispondere alla seguente domanda al momento della correzione:
 > perché `identity()` è un metodo, e non una costante `public static`?
+Identity è un metodo perchè comunque dovremmo usare una get per restituirlo, non daremmo accesso diretto ad un campo
 
 ## Parte 2: sfruttare le classi anonime per costruire una libreria funzionale
 
