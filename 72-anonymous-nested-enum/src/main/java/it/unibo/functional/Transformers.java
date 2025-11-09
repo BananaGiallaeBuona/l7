@@ -1,11 +1,10 @@
 package it.unibo.functional;
+//this code doesn't pass some tests, but doesn't have java errors
 
 import it.unibo.functional.api.Function;
 
-import java.beans.IndexedPropertyDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +34,7 @@ public final class Transformers {
         final Function<I, ? extends Collection<? extends O>> transformer
     ) {
         final var result = new ArrayList<O>();
-        for (final I input : base) {
+        for (final I input : Objects.requireNonNull(base, "null values aren't accepted")) {
             result.addAll(transformer.call(input));
         }
         return result;
@@ -57,7 +56,7 @@ public final class Transformers {
      */
     public static <I, O> List<O> transform(final Iterable<I> base, final Function<I, O> transformer) {
         final List<O> results = new ArrayList<O>();
-        for (final I input : base) {
+        for (final I input : Objects.requireNonNull(base, "null values aren't accepted")) {
             results.add(transformer.call(input));
         }
         return results;
@@ -121,7 +120,7 @@ public final class Transformers {
     public static <I> List<I> reject(final Iterable<I> base, final Function<I, Boolean> test) {
         final List<I> accepted = Transformers.select(base, test);
         final List<I> copyBase = new ArrayList<>();
-        for (final I i:base){
+        for (final I i:Objects.requireNonNull(base, "null values aren't accepted")){
             copyBase.add(i);
         }
         copyBase.removeAll(accepted);
