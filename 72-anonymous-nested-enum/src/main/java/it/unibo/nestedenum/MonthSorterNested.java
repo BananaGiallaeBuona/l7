@@ -50,7 +50,7 @@ public final class MonthSorterNested implements MonthSorter {
 
                 }
             }
-            if (found != null) { //
+            if (found == null) { //
                 throw new IllegalArgumentException("there isn't any month associable to : '" + str + "'");
             
             }
