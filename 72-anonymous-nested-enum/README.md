@@ -8,22 +8,26 @@ Ci si prepari a rispondere alla seguente domanda al momento della correzione:
 > perché `identity()` è un metodo, e non una costante `public static`?
 Identity è un metodo perchè comunque dovremmo usare una get per restituirlo, non daremmo accesso diretto ad un campo
 
-## Parte 2: sfruttare le classi anonime per costruire una libreria funzionale
+## Parte 2: sfruttare le classi anonime per costruire una libreria funzionale FATTO
 
 Si implementino le funzioni di utilità non ancora implementate all'interno di `Transformers`.
 Queste funzioni rappresentano manipolazioni di tipo *funzionale* di collezioni.
 Si leggano con attenzione i commenti Javadoc presenti per trovare la soluzione più compatta per implementare le funzioni
 richieste.
 Si minimizzino le duplicazioni di codice, e non si utilizzino metodi "di appoggio".
+FATTO
 
 ## Parte 3: classi innestate ed enum
 
 All'interno della classe MonthSorterNested, si crei una `enum Month` che modella i mesi dell'anno.
 Si suggerisce di valutare l'utilizzo di un campo che modella il numero di giorni del mese.
-Questa enum *deve* avere un metodo `Month fromString(String)` che, data una stringa di testo, restituisce il `Month`
+Questa enum *deve* avere un metodo `Month fromString(String)` che, data una stringa di testo, restituisce il `Month` 
 che meglio la rappresenta. A tal proposito, si legga con molta attenzione la Javadoc di `MonthSorter`.
+FATTO
+
 
 Utilizzare questa `enum` come supporto per la costruzione di due classi innestate: `SortByMonthOrder` e `SortByDate`
 che implementano `Comparator<String>` e rappresentano, rispettivamente, un comparatore che ordina delle stringhe
 (interpretandole come mesi) in base al loro ordine nell'anno, ed un comparatore che le ordina invece in base al numero
 di giorni che il mese ha.
+FATTO

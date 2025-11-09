@@ -13,7 +13,7 @@ import java.util.Comparator;
  * <p>
  * For instance,
  * {@code "January"},
- * {@code "JANUARY"},
+ * {@code "JANUARY"},       
  * {@code "january"}
  * {@code "Jan"}, and
  * {@code "JA"}
