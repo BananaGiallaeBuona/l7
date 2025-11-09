@@ -1,1 +1,15 @@
-*.class
+# Ignora i file di sistema di macOS
+.DS_Store
+
+# Ignora le cartelle e i file di build di Gradle
+.gradle/
+build/
+bin/
+
+# Ignora lo script di setup che è finito dentro
+scriptGit.sh
+
+# File generati dagli IDE (buona pratica)
+.idea/
+*.iml
+*.iws
