@@ -1,5 +1,5 @@
 package it.unibo.nestedenum;
-
+//this code doesn't pass the sorting test
 import java.time.Month;
 import java.util.Comparator;
 import java.util.Locale;
@@ -35,7 +35,7 @@ public final class MonthSorterNested implements MonthSorter {
             str = str.toLowerCase();
             enumMonth found = null;
             for (final enumMonth mese : enumMonth.values()){
-                if (mese.name().equals(str)){
+                if (mese.name().toLowerCase().equals(str)){
                     return mese;
                 }
                 else {
@@ -56,11 +56,6 @@ public final class MonthSorterNested implements MonthSorter {
             }
             return found;
     }
-
-    @Override
-    public Comparator<String> sortByOrder() {
-        return null;
-    }
 }
 
     @Override
@@ -69,19 +64,26 @@ public final class MonthSorterNested implements MonthSorter {
             
             @Override
             public int compare(final String o1, final String o2) {
-                final int SMALLER = -1;
-                final int EQUAL = 0;
-                final int BIGGER = 1;
-                final enumMonth m1 = enumMonth.fromString(o1);
-                final enumMonth m2 = enumMonth.fromString(o2);
+                try {
+                    final int SMALLER = -1;
+                    final int EQUAL = 0;
+                    final int BIGGER = 1;
+                    final enumMonth m1 = enumMonth.fromString(o1);
+                    final enumMonth m2 = enumMonth.fromString(o2);
+                    
+                    if (m1.getDays() < m2.getDays()){
+                        return SMALLER;
+                    }
+                    if (m1.getDays() > m2.getDays()){
+                        return BIGGER;
+                    }
+                    return EQUAL;
+                } catch (NullPointerException e) {
+                    throw new IllegalArgumentException("Comparator received a null value", e);
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException("Comparator received an unparseable string", e);
+                }
                 
-                if (m1.getDays() < m2.getDays()){
-                    return SMALLER;
-                }
-                if (m1.getDays() > m2.getDays()){
-                    return BIGGER;
-                }
-                return EQUAL;
             }
         };
         return comparator;
@@ -93,20 +95,27 @@ public final class MonthSorterNested implements MonthSorter {
             
             @Override
             public int compare(final String o1, final String o2) {
-                final int BEFORE = -1;
-                final int SAME = 0;
-                final int AFTER = 1;
-                final enumMonth m1 = enumMonth.fromString(o1);
-                final enumMonth m2 = enumMonth.fromString(o2);
-                
-                if (m1.ordinal() < m2.ordinal()){
-                    return BEFORE;
+                try{
+                    final int BEFORE = -1;
+                    final int SAME = 0;
+                    final int AFTER = 1;
+                    final enumMonth m1 = enumMonth.fromString(o1);
+                    final enumMonth m2 = enumMonth.fromString(o2);
+                    
+                    if (m1.ordinal() < m2.ordinal()){
+                        return BEFORE;
+                    }
+                    if (m1.ordinal() > m2.ordinal()){
+                        return AFTER;
+                    }
+                    return SAME;
+                } catch (NullPointerException e) {
+                    throw new IllegalArgumentException("Comparator received a null value", e);
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException("Comparator received an unparseable string", e);
                 }
-                if (m1.ordinal() > m2.ordinal()){
-                    return AFTER;
-                }
-                return SAME;
             }
+                    
         };
         return comparator;
     }
